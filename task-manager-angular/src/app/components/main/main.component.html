@@ -1,0 +1,66 @@
+<h1 class="header-title">TASK  MANAGER</h1>
+
+<div class="buttons">
+  <div class="right-buttons">
+    <button class="nav-button" (click)="getMyTasks()">Get my tasks</button>
+    <button class="nav-button" (click)="getAllTasks()">Get all tasks</button>
+  </div>
+  <div class="left-buttons">
+    <button class="nav-button" (click)="register()">Register</button>
+    <button class="nav-button" (click)="myProfile()">My profile</button>
+    <button class="nav-button" (click)="login()">Login</button>
+  </div>
+</div>
+
+<div class="body-container">
+  <div *ngFor="let task of tasks" class="task-container">
+    <div class="task">
+      <form (ngSubmit)="updateTask(task)" class="login-form">
+        <div class="form-group">
+          <label for="title"></label>
+          <input type="text" id="title" [(ngModel)]="task.title" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label for="description"></label>
+          <textarea  type="text" id="description" [(ngModel)]="task.description" [ngModelOptions]="{standalone: true}"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="priority"></label>
+          <select id="priority" [(ngModel)]="task.priority" [ngModelOptions]="{standalone: true}">
+            <option value="LOW">LOW</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="HIGH">HIGH</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="status"></label>
+          <select id="status" [(ngModel)]="task.status" [ngModelOptions]="{standalone: true}">
+            <option value="NOT_STARTED">NOT_STARTED</option>
+            <option value="IN_PROGRESS">IN_PROGRESS</option>
+            <option value="COMPLETED">COMPLETED</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="start"></label>
+          <input type="datetime-local" id="start" [(ngModel)]="task.start" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label for="finish"></label>
+          <input type="datetime-local" id="finish" [(ngModel)]="task.finish" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <p class="owner">Owner: {{task.ownerEmail}}</p>
+        </div>
+        <button type="submit" class="submit-button">update</button>
+      </form>
+      <button (click)="deleteTask(task)" class="delete-button">delete</button>
+    </div>
+  </div>
+  <app-add-task></app-add-task>
+</div>
+
+
+<div class="message">
+  <app-message></app-message>
+</div>
+

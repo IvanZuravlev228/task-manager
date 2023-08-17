@@ -1,0 +1,32 @@
+.login-form {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  /*width: 500px;*/
+  padding-right: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.submit-button {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
