@@ -1,0 +1,14 @@
+<form (ngSubmit)="login()" class="login-form">
+  <h3>Nice to meet you</h3>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="text" id="email" [(ngModel)]="userLogin.email" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <label for="pass">Password:</label>
+    <input type="password" id="pass" [(ngModel)]="userLogin.password" [ngModelOptions]="{standalone: true}">
+  </div>
+  <button type="submit" class="submit-button">login</button>
+</form>
+
+<app-message></app-message>

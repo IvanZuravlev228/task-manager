@@ -1,0 +1,13 @@
+.user-info {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.user-info p {
+  margin: 0;
+}
+
+.user-info p:first-child {
+  font-weight: bold;
+}
