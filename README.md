@@ -4,17 +4,17 @@
 <p>Task manager is an application for recording your tasks. In this app, you can set your task title, description, and deadline. The application has authentication, so to work with the application you must register, then log into your account and after that you can see your tasks.</p>
 <br>
 <h2 align=center><img src="https://cdn-icons-png.flaticon.com/128/4365/4365271.png" width=30px>Technologies <img src="https://cdn-icons-png.flaticon.com/128/4365/4365271.png" width=30px></h2>
-<code>Angular</code> |
-<code>Java 17</code> |
-<code>Spring Boot</code> |
+<code>Angular v.16.1.8</code> |
+<code>Java v.17.0.5</code> |
+<code>Spring Boot v3.1.2</code> |
 <code>Spring Security</code> |
 <code>Spirng Boot Dev Tools</code> |
 <code>Spring Web</code> |
 <code>Spring Data JPA</code> |
 <code>Lombok</code> |
 <code>Liquibase</code> |
-<code>MySQL</code> |
-<code>Docker</code> |
+<code>MySQL v.8.0.22</code> |
+<code>Tomcat v.10.1.11 </code> |
 <br>
 <h3 align=center><img width=30px src="https://cdn-icons-png.flaticon.com/128/4357/4357645.png"> How to run <img width=30px src="https://cdn-icons-png.flaticon.com/128/4357/4357645.png"></h3>
 <p>1. Copy this repo to your PC</p>
