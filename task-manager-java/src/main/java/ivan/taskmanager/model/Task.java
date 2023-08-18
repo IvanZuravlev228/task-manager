@@ -10,6 +10,8 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -27,6 +29,8 @@ public class Task {
     private LocalDateTime start;
     private LocalDateTime finish;
     @OneToOne
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private User owner;
 
     public enum Priority {

@@ -20,9 +20,9 @@ import org.springframework.stereotype.Component;
 public class JwtTokenProvider {
     private static final String AUTHENTICATION_TOKEN_TYPE = "Bearer ";
     private static final String REQUEST_HEADER = "Authorization";
-    @Value(value = "task")
+    @Value("${secret.word}")
     private String secret;
-    @Value(value = "3600000") // equal 60 min
+    @Value("${validity.time}") // equal 60 min
     private long validityTime;
     private final UserDetailsService userDetailsService;
 

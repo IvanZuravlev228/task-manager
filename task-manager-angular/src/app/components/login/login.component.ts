@@ -31,7 +31,7 @@ export class LoginComponent {
         },
         error: (error) => {
           if (error.status === 403) {
-            this.messageService.showMessage("User with this email does not exist");
+            this.messageService.showMessage("Incorrect password or email");
           } else {
             this.messageService.showMessage("Something went wrong");
           }

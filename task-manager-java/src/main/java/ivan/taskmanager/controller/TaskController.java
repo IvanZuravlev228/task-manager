@@ -9,6 +9,8 @@ import ivan.taskmanager.service.mapper.RequestResponseMapper;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,42 +30,44 @@ public class TaskController {
     private RequestResponseMapper<TaskRequestDto, TaskResponseDto, Task> taskMapper;
 
     @GetMapping
-    public List<TaskResponseDto> getAll() {
-        return taskService.getAll().stream()
+    public ResponseEntity<List<TaskResponseDto>> getAll() {
+        return new ResponseEntity<>(taskService.getAll().stream()
                 .map(taskMapper::toDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @PostMapping
-    public TaskResponseDto create(@RequestBody TaskRequestDto task,
+    public ResponseEntity<TaskResponseDto> create(@RequestBody TaskRequestDto task,
                                   Authentication authentication) {
         task.setOwnerEmail(authentication.getName());
-        return taskMapper.toDto(taskService.create(taskMapper.toModel(task)));
+        return new ResponseEntity<>(taskMapper.toDto(taskService.create(taskMapper.toModel(task))),
+                HttpStatus.OK);
     }
 
     @GetMapping("/me")
-    public List<TaskResponseDto> getAllByUserId(Authentication authentication) {
-        return taskService.getAllByUserId(userService.getByEmail(authentication.getName()).getId())
-                .stream()
+    public ResponseEntity<List<TaskResponseDto>> getAllByUserId(Authentication authentication) {
+        return new ResponseEntity<>(taskService.getAllByUserId(
+                userService.getByEmail(authentication.getName()).getId()).stream()
                 .map(taskMapper::toDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public TaskResponseDto getById(@PathVariable Long id) {
-        return taskMapper.toDto(taskService.getById(id));
+    public ResponseEntity<TaskResponseDto> getById(@PathVariable Long id) {
+        return new ResponseEntity<>(taskMapper.toDto(taskService.getById(id)), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public TaskResponseDto update(@PathVariable Long id,
+    public ResponseEntity<TaskResponseDto> update(@PathVariable Long id,
                                   @RequestBody TaskRequestDto task,
                                   Authentication authentication) {
-        return taskMapper.toDto(taskService.update(
-                authentication.getName(), id, taskMapper.toModel(task)));
+        return new ResponseEntity<>(taskMapper.toDto(taskService.update(
+                authentication.getName(), id, taskMapper.toModel(task))), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         taskService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
