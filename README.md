@@ -17,7 +17,10 @@
 <code>Tomcat v.10.1.11 </code> |
 <br>
 <h3 align=center><img width=30px src="https://cdn-icons-png.flaticon.com/128/4357/4357645.png"> How to run <img width=30px src="https://cdn-icons-png.flaticon.com/128/4357/4357645.png"></h3>
-<p>1. Copy this repo to your PC</p>
-<p>2. Run java API</p>
-<p>2. Run angular API</p>
-<p>3. After that you can use project with UI <img width=20px src="https://cdn-icons-png.flaticon.com/128/742/742751.png"></p>
+<p>For run this project you must have a Docker!</p>
+
+<p>1. Run this command in task-manager-java package: <code>mvn package</code></p>
+
+<p>2. Run this command in root package: <code>docker-compose up</code></p>
+
+<p>3. Open a browser and navigate to <code>localhost:4202</code></p>
