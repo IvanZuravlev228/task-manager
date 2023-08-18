@@ -8,6 +8,7 @@ import ivan.taskmanager.security.jwt.JwtTokenProvider;
 import ivan.taskmanager.service.AuthenticationService;
 import ivan.taskmanager.service.UserService;
 import ivan.taskmanager.service.mapper.RequestResponseMapper;
+import jakarta.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -30,13 +31,13 @@ public class UserController {
     private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/register")
-    public ResponseEntity<UserResponseDto> register(@RequestBody UserRequestDto user) {
+    public ResponseEntity<UserResponseDto> register(@RequestBody @Valid UserRequestDto user) {
         return new ResponseEntity<>(userMapper.toDto(
                 authenticationService.register(userMapper.toModel(user))), HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody UserLoginDto userLoginDto)
+    public ResponseEntity<Object> login(@RequestBody @Valid UserLoginDto userLoginDto)
             throws RuntimeException {
         User user = authenticationService.login(
                     userLoginDto.getEmail(), userLoginDto.getPassword());
