@@ -30,16 +30,16 @@ public class UserController {
     private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/register")
-    public UserResponseDto register(@RequestBody UserRequestDto user) {
-        return userMapper.toDto(
-                authenticationService.register(userMapper.toModel(user)));
+    public ResponseEntity<UserResponseDto> register(@RequestBody UserRequestDto user) {
+        return new ResponseEntity<>(userMapper.toDto(
+                authenticationService.register(userMapper.toModel(user))), HttpStatus.OK);
     }
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody UserLoginDto userLoginDto)
             throws RuntimeException {
         User user = authenticationService.login(
-                userLoginDto.getEmail(), userLoginDto.getPassword());
+                    userLoginDto.getEmail(), userLoginDto.getPassword());
         String token = jwtTokenProvider.createToken(user.getEmail());
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", token);
@@ -47,7 +47,8 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public UserResponseDto getMe(Authentication authentication) {
-        return userMapper.toDto(userService.getByEmail(authentication.getName()));
+    public ResponseEntity<UserResponseDto> getMe(Authentication authentication) {
+        return new ResponseEntity<>(userMapper.toDto(
+                userService.getByEmail(authentication.getName())), HttpStatus.OK);
     }
 }

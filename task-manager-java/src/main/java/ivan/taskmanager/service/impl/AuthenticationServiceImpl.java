@@ -24,8 +24,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public User login(String login, String password) throws RuntimeException {
         User user = userRepository.getUserByEmail(login).orElseThrow(() ->
                 new NoSuchElementException("Can't find user by login: " + login));
-        String encodedPassword = passwordEncoder.encode(password);
-        if (!passwordEncoder.matches(password, encodedPassword)) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new RuntimeException("Incorrect username or password!!!");
         }
         return user;
