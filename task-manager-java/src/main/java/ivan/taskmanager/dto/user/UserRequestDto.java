@@ -1,6 +1,6 @@
 package ivan.taskmanager.dto.user;
 
-import ivan.taskmanager.validation.Email;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class UserRequestDto {
-    @Email
+    @Email(message = "Invalid email address")
     private String email;
     @NotNull
     private String password;

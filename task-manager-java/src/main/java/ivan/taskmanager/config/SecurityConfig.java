@@ -41,13 +41,15 @@ public class SecurityConfig {
                     auth.requestMatchers(HttpMethod.POST, "/users/register", "/users/login")
                             .permitAll();
 
-                    auth.requestMatchers(HttpMethod.GET, "/users/me", "/tasks", "/tasks/me",
-                                    "/tasks/{id}")
+                    auth.requestMatchers(HttpMethod.GET, "/users/me", "/tasks/squad/{squadId}",
+                                    "/tasks/squads")
                             .authenticated();
-                    auth.requestMatchers(HttpMethod.POST, "/tasks").authenticated();
+                    auth.requestMatchers(HttpMethod.POST, "/tasks/add/squad",
+                            "/tasks/add").authenticated();
                     auth.requestMatchers(HttpMethod.PUT, "/tasks/{id}").authenticated();
-                    auth.requestMatchers(HttpMethod.DELETE, "/tasks/{id}").authenticated();
-                    auth.requestMatchers(HttpMethod.OPTIONS, "/**", "/tasks/{id}").permitAll();
+                    auth.requestMatchers(HttpMethod.DELETE, "/tasks/squads/{squadId}",
+                            "/tasks/squad/{squadId}/task/{taskId}").authenticated();
+                    auth.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
                 })
                 .authenticationProvider(authenticationProvider())
                 .csrf(AbstractHttpConfigurer::disable)

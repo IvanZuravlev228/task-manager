@@ -13,6 +13,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.navigate(['/tasks']);
+    if (this.cookie.get("jwt-token").length <= 0) {
+      console.log("hello");
+      this.router.navigate(['/hello']);
+    } else {
+      console.log("tasks");
+      this.router.navigate(['/tasks']);
+    }
   }
 }
