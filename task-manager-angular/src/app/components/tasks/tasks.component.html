@@ -1,0 +1,120 @@
+<app-main></app-main>
+
+
+<div class="squad-and-tasks">
+  <div class="squad">
+    <div class="squad-header">
+      <h3 class="squad-header-title">SQUADS</h3>
+    </div>
+
+    <div class="squad-items">
+      <div *ngFor="let squad of squads" class="item">
+        <div class="title-squad">
+          <button (click)="getAllTasksBySquad(squad.id)" class="squad-name">{{squad.title}}</button>
+          <div class="delete-squad">
+            <button (click)="deleteSquad(squad.id)" class="del-squad">X</button>
+          </div>
+        </div>
+      </div>
+      <div class="add-new-squad">
+        <form (ngSubmit)="createNewSquad()" class="squad-form" class="title-squad">
+          <div class="form-group">
+            <input class="create-new-squad" type="text" [(ngModel)]="squadForAdd.title" [ngModelOptions]="{standalone: true}">
+          </div>
+          <button type="submit" class="add-new-squad">+</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showTasks" class="tasks">
+    <div class="body-container">
+      <div *ngFor="let task of tasks" class="task-container">
+        <!--        {{task.id}}-->
+        <form (ngSubmit)="updateTask(task)" class="login-form">
+          <div class="first-level">
+            <div class="title-cont">
+              <label for="title1"></label>
+              <input type="text" id="title1" class="title" [(ngModel)]="task.title" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="priority-cont">
+              <label for="priority1"></label>
+              <select id="priority1" class="priority" [(ngModel)]="task.priority" [ngModelOptions]="{standalone: true}">
+                <option value="LOW">LOW</option>
+                <option value="MEDIUM">MEDIUM</option>
+                <option value="HIGH">HIGH</option>
+              </select>
+            </div>
+            <div class="status-cont">
+              <label for="status1"></label>
+              <select id="status1" class="status" [(ngModel)]="task.status" [ngModelOptions]="{standalone: true}">
+                <option value="NOT_STARTED">NOT_STARTED</option>
+                <option value="IN_PROGRESS">IN_PROGRESS</option>
+                <option value="COMPLETED">COMPLETED</option>
+              </select>
+            </div>
+            <div class="finish-cont">
+              <label for="finish1"></label>
+              <input type="datetime-local" id="finish1" class="finish" [(ngModel)]="task.finish" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="second-level">
+            <div class="description-cont">
+              <label for="description1"></label>
+              <textarea type="text" id="description1" class="description" [(ngModel)]="task.description" [ngModelOptions]="{standalone: true}"></textarea>
+            </div>
+            <div class="owner-cont">
+              {{task.ownerEmail}}
+            </div>
+          </div>
+
+          <button type="submit" class="update-button">update</button>
+          <button (click)="deleteTaskFromSquad(task.id)" class="del-button">del task</button>
+        </form>
+
+      </div>
+
+      <form (ngSubmit)="addTaskToSquad()" class="task-container">
+        <div class="first-level">
+          <div class="title-cont">
+            <label for="title"></label>
+            <input type="text" id="title" class="title" [(ngModel)]="task.title" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="priority-cont">
+            <label for="priority"></label>
+            <select id="priority" class="priority" [(ngModel)]="task.priority" [ngModelOptions]="{standalone: true}">
+              <option value="LOW">LOW</option>
+              <option value="MEDIUM">MEDIUM</option>
+              <option value="HIGH">HIGH</option>
+            </select>
+          </div>
+          <div class="status-cont">
+            <label for="status"></label>
+            <select id="status" class="status" [(ngModel)]="task.status" [ngModelOptions]="{standalone: true}">
+              <option value="NOT_STARTED">NOT_STARTED</option>
+              <option value="IN_PROGRESS">IN_PROGRESS</option>
+              <option value="COMPLETED">COMPLETED</option>
+            </select>
+          </div>
+          <div class="finish-cont">
+            <label for="finish"></label>
+            <input type="datetime-local" id="finish" class="finish" [(ngModel)]="task.finish" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="second-level">
+          <div class="description-cont">
+            <label for="description"></label>
+            <textarea type="text" id="description" class="description" [(ngModel)]="task.description" [ngModelOptions]="{standalone: true}"></textarea>
+          </div>
+          <div class="owner-cont">
+            {{task.ownerEmail}}
+          </div>
+        </div>
+
+        <button type="submit" class="update-button">add</button>
+      </form>
+    </div>
+  </div>
+
+
+</div>

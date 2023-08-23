@@ -9,9 +9,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MainComponent } from './components/main/main.component';
-import { AddTaskComponent } from './components/add-task/add-task.component';
 import {UserService} from "./services/user.service";
 import { MessageComponent } from './components/message/message.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { MessageComponent } from './components/message/message.component';
     RegisterComponent,
     ProfileComponent,
     MainComponent,
-    AddTaskComponent,
     MessageComponent,
+    TasksComponent,
   ],
   imports: [
     BrowserModule,

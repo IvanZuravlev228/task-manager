@@ -1,3 +1,4 @@
+
 .header-title {
   font-size: 2em;
   font-family: sans-serif;
@@ -8,101 +9,13 @@
   text-align: center;
 }
 
-.body-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.container {
-  margin-left: 20px;
-}
-
-.task-container {
-  flex: 0 0 calc(20% - 15px);
-  height: 300px;
-  width: 500px;
-  margin-left: 25px;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  display: none;
-}
-
-input[type="text"],
-select,
-input[type="datetime-local"] {
-  border: none;
-  background-color: transparent;
-  border-bottom: 1px solid #ccc;
-  padding: 5px;
-  width: 100%;
-}
-
-.owner {
-  border: none;
-  background-color: transparent;
-  border-bottom: 1px solid #ccc;
-  padding: 5px;
-  width: 100%;
-  font-size: 14px;
-}
-
-#description {
-  border: none;
-  background-color: transparent;
-  border-bottom: 1px solid #ccc;
-  padding: 5px;
-  width: 100%;
-  height: auto;
-  white-space: pre-wrap;
-  min-height: 25px;
-  max-height: 80px;
-  min-width: 350px;
-  max-width: 350px;
-}
-
-.submit-button {
-  background-color: #98faac;
-  border: solid 1px black;
-  padding: 7px;
-}
-
-.delete-button {
-  background-color: #fa8c8d;
-  border: solid 1px black;
-  width: 100%;
-  margin-top: 5px;
-  padding: 7px;
-}
-
-.message {
-  margin-top: 20px;
-  margin-bottom: 50px;
-}
-
 .buttons {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 15px;
+  align-items: center;
+  text-align: center;
 }
 
-.right-buttons {
-  float: right;
-}
-
-.left-buttons {
-  float: left;
+center-buttons {
 }
 
 .nav-button {
@@ -113,3 +26,11 @@ input[type="datetime-local"] {
   border: solid 1px black;
   border-radius: 6px;
 }
+
+.message {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+/*==================================================================================*/
+
